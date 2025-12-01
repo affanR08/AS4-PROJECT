@@ -1,0 +1,10 @@
+.trans{
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.644);
+}
+.card{
+    max-width: 400px;
+}
+select, input[type="text"]{
+    width: 15vw!important;
+}

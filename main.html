@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary trans">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img src="img/newstep.png" alt="" width="80"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav fs-5">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid d-flex flex-row">
+    <div>
+        <div class="container mt-4 d-flex flex-column">
+  <div class="row g-3 d-flex flex-column">
+    <div class="col-md-4 mb-3">
+        
+  <input type="text" id="searchInput" class="form-control  border-secondary" placeholder="Search jobs by title, company or location ...">
+    </div>
+    <div class="col-md-4 d-flex flex-column">
+      <select id="filterLocation" class="form-select">
+        <option value="">Location (none)</option>
+        <option value="Tangerang">Tangerang</option>
+        <option value="Bekasi">Bekasi</option>
+        <option value="Cibitung">Cibitung</option>
+        <option value="kalimantan tengah">kalimantan tengah</option>
+      </select>
+    </div>
+    <div class="col-md-4 mb-3">
+      <select id="filterSalary" class="form-select">
+        <option value="">Salary (none)</option>
+        <option value="<7000000">Below Rp 7.000.000</option>
+        <option value="7000000-8000000">Rp 7.000.000 – Rp 8.000.000</option>
+        <option value=">8000000">Above Rp 8.000.000</option>
+      </select>
+    </div>
+    <div class="col-md-4 mb-3">
+      <select id="filterJobs" class="form-select">
+        <option value="">Jobs Type (none)</option>
+        <option value="remote">Remote</option>
+        <option value="full-time">Full-time</option>
+      </select>
+    </div>
+  </div>
+</div>
+    </div>
+    
+              <div class="row row-cols-1 container row-cols-md-3 g-4">
+  <div class="col">
+    <div class="card h-100">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</body>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="js/script.js"></script>
+</html>
