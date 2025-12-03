@@ -6,9 +6,10 @@
     <title>Landing Page</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-body-tertiary trans">
+<nav class="navbar navbar-expand-lg trans top-0 sticky-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"><img src="img/newstep.png" alt="" width="80"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,13 +31,13 @@
     </div>
   </div>
 </nav>
-<div class="container-fluid d-flex flex-row">
+<div class="container-fluid d-flex flex-row column">
     <div>
-        <div class="container mt-4 d-flex flex-column">
+        <div class="container mt-4 d-flex flex-row top-10">
   <div class="row g-3 d-flex flex-column">
     <div class="col-md-4 mb-3">
         
-  <input type="text" id="searchInput" class="form-control  border-secondary" placeholder="Search jobs by title, company or location ...">
+  <input type="text" id="searchInput" class="form-control  border-secondary" placeholder="Search Product by name, descriptions or location ...">
     </div>
     <div class="col-md-4 d-flex flex-column">
       <select id="filterLocation" class="form-select">
@@ -48,25 +49,25 @@
       </select>
     </div>
     <div class="col-md-4 mb-3">
-      <select id="filterSalary" class="form-select">
-        <option value="">Salary (none)</option>
-        <option value="<7000000">Below Rp 7.000.000</option>
-        <option value="7000000-8000000">Rp 7.000.000 – Rp 8.000.000</option>
-        <option value=">8000000">Above Rp 8.000.000</option>
+      <select id="filterPrice" class="form-select">
+        <option value="">Price (none)</option>
+        <option value="<10000">Below Rp 10.000</option>
+        <option value="10000-50000">Rp 10.000 – Rp 50.000</option>
+        <option value=">50000">Above Rp 50.000</option>
       </select>
     </div>
     <div class="col-md-4 mb-3">
-      <select id="filterJobs" class="form-select">
-        <option value="">Jobs Type (none)</option>
-        <option value="remote">Remote</option>
-        <option value="full-time">Full-time</option>
+      <select id="filterCategory" class="form-select">
+        <option value="">Category (none)</option>
+        <option value="cikarang">makanan</option>
+        <option value="bekasi">minuman</option>
       </select>
     </div>
   </div>
 </div>
     </div>
     
-              <div class="row row-cols-1 container row-cols-md-3 g-4">
+              <div class="row row-cols-1 container row-cols-md-3 g-4 mt-1">
   <div class="col">
     <div class="card h-100">
       <img src="..." class="card-img-top" alt="...">
@@ -105,7 +106,10 @@
   </div>
 </div>
 </div>
+<div id="paginationControls"></div>
 </body>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script type="module" src="js/script.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 </html>
+<img src="" alt="">
