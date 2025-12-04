@@ -252,9 +252,11 @@ document.addEventListener('DOMContentLoaded', function() {
     favoriteButtons.forEach((button, index) => {
         button.addEventListener('click', () => {
             const icon = favoriteIcons[index];
-            icon
+            icon.style.background ='../img/bxs-heart.svg'
         });
     });
+
+    
 
 // Initial save to localStorage
 saveProductsToLocalStorage();
