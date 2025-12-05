@@ -35,7 +35,7 @@ function renderProducts(productsToRender) {
     
     productContainer.innerHTML = '';
     
-    productsToRender.forEach(item => {
+    productsToRender.forEach((item, index) => {
         const productCard = `
             <div class="col">
                 <div class="card h-100">
@@ -43,7 +43,7 @@ function renderProducts(productsToRender) {
                     <div class="card-body">
                     <div class="d-flex justify-content-between mb-2">
                         <h5 class="card-title">${item.nama}</h5>
-                        <button class="btn btn-light btn-sm favorite-btn" title="Add to Favorites">
+                        <button class="btn btn-light btn-sm favorite-btn ${item.favorite ? 'clicked' : ''}" title="Add to Favorites">
                         </button>
                         </div>
                         <p class="card-text">${item.deskripsi}</p>
@@ -55,6 +55,25 @@ function renderProducts(productsToRender) {
             </div>
         `;
         productContainer.innerHTML += productCard;
+    });
+
+    // Attach favorite button handlers (toggle class) after rendering
+    const favButtons = productContainer.querySelectorAll('.favorite-btn');
+    favButtons.forEach((btn, index) => {
+        // Set initial state based on the favorite property
+        if (product[index].favorite) {
+            btn.classList.add('clicked');
+        }
+
+        btn.addEventListener('click', () => {
+            btn.classList.toggle('clicked');
+
+            // Update the favorite property of the corresponding product
+            product[index].favorite = !product[index].favorite;
+
+            // Save updated products to local storage
+            saveProductsToLocalStorage();
+        });
     });
 }
 
@@ -204,6 +223,18 @@ const productProxy = new Proxy(product, productHandler);
 // Example: Use productProxy.push() instead of product.push()
 // Ensure all operations on the product array go through the proxy
 
+// Function to load products from local storage
+function loadProductsFromLocalStorage() {
+    const storedProducts = localStorage.getItem('products');
+    if (storedProducts) {
+        const parsedProducts = JSON.parse(storedProducts);
+        product.splice(0, product.length, ...parsedProducts); // Update array content without reassigning
+    }
+}
+
+// Call this function at the beginning to load products
+loadProductsFromLocalStorage();
+
 // Event listeners
 document.addEventListener('DOMContentLoaded', function() {
     // Initial render
@@ -246,15 +277,53 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-    const favoriteIcons = document.querySelectorAll('box-icon[name="heart"]');
-    const favoriteButtons = document.querySelectorAll('.favorite-btn');
+    
+const favcardContainer = document.querySelector('.column.container-fluid.mt-1');
+// Render favorite products on fav.html
+function renderFavoriteProducts() {
+    if (!favcardContainer) return;
 
-    favoriteButtons.forEach((button, index) => {
-        button.addEventListener('click', () => {
-            const icon = favoriteIcons[index];
-            icon
-        });
+    const favoriteProducts = product.filter(item => item.favorite);
+
+    favcardContainer.innerHTML = '';
+    
+    favoriteProducts.forEach(item => {
+
+    const jobElement = document.createElement("div");
+    jobElement.className = "card mb-3 mx-auto rounded contact";
+    jobElement.style.width = "100%";
+        jobElement.innerHTML = `
+            <div class="col">
+                <div class="card h-100 mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="img/${item.gambar}" class="img-fluid rounded-start" alt="${item.nama}" style="height: 200px; object-fit: cover;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                            <h5 class="card-title">${item.nama}</h5>
+                            <p class="card-text">${item.deskripsi}</p>
+                            <p class="card-text text-muted">Lokasi: ${item.lokasi || '—'}</p>
+                            <p class="card-text"><strong>Rp ${item.harga.toLocaleString('id-ID')}</strong></p>
+                            <span class="badge bg-primary footer">${item.kategori}</span>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        favcardContainer.appendChild(jobElement);
     });
+
+    if (favoriteProducts.length === 0) {
+        favcardContainer.innerHTML = '<h4 class="text-center">No favorite items found...</h4>';
+    }
+}
+
+// Call renderFavoriteProducts on fav.html
+if (window.location.pathname.endsWith('fav.html')) {
+    renderFavoriteProducts();
+}
 
 // Initial save to localStorage
 saveProductsToLocalStorage();

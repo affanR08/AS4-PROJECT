@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg trans top-0 sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img src="img/newstep.png" alt="" width="80"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav fs-5">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid d-flex flex-row column">
+    <div>
+        <div class="container mt-4 d-flex flex-row top-10">
+  <div class="row g-3 d-flex flex-column">
+    <div class="col-md-4 mb-3">
+        
+  <input type="text" id="searchInput" class="form-control  border-secondary" placeholder="Search Product by name, descriptions or location ...">
+    </div>
+    <div class="col-md-4 d-flex flex-column">
+      <select id="filterLocation" class="form-select">
+        <option value="">Location (none)</option>
+        <option value="Tangerang">Tangerang</option>
+        <option value="Bekasi">Bekasi</option>
+        <option value="Cibitung">Cibitung</option>
+        <option value="kalimantan tengah">kalimantan tengah</option>
+      </select>
+    </div>
+    <div class="col-md-4 mb-3">
+      <select id="filterPrice" class="form-select">
+        <option value="">Price (none)</option>
+        <option value="<10000">Below Rp 10.000</option>
+        <option value="10000-50000">Rp 10.000 – Rp 50.000</option>
+        <option value=">50000">Above Rp 50.000</option>
+      </select>
+    </div>
+    <div class="col-md-4 mb-3">
+      <select id="filterCategory" class="form-select">
+        <option value="">Category (none)</option>
+        <option value="cikarang">makanan</option>
+        <option value="bekasi">minuman</option>
+      </select>
+    </div>
+  </div>
+</div>
+    </div>
+    
+              <div class="column container-fluid g-4 mt-1">
+  <div class="col">
+    <div class="card h-100">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div id="paginationControls"></div>
+</body>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="js/script.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</html>
+<img src="" alt="">

@@ -35,3 +35,6 @@ i{
 .favorite-btn:hover{
     background-image: url('../img/bxs-heart.svg');
 }
+.clicked{
+    background-image: url('../img/bxs-heart.svg');
+}
