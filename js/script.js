@@ -56,6 +56,60 @@ function renderProducts(productsToRender) {
         `;
         productContainer.innerHTML += productCard;
     });
+const favcardContainer = document.querySelector('.row.row-cols-1.container.row-cols-md-3.g-4.mt-1');
+// Render favorite products on fav.html
+function renderFavoriteProducts() {
+    if (!favcardContainer) return;
+
+    const favoriteProducts = product.filter(item => item.favorite);
+
+    favcardContainer.innerHTML = '';
+    
+    favoriteProducts.forEach((item, index) => {
+        const productCard = `
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img/${item.gambar}" class="card-img-top" alt="${item.nama}" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                    <div class="d-flex justify-content-between mb-2">
+                        <h5 class="card-title">${item.nama}</h5>
+                        <button class="btn btn-light btn-sm favorite-btn clicked" data-id="${item.id}" title="Remove from Favorites">
+                        </button>
+                        </div>
+                        <p class="card-text">${item.deskripsi}</p>
+                        <p class="card-text text-muted">Lokasi: ${item.lokasi || '—'}</p>
+                        <p class="card-text"><strong>Rp ${item.harga.toLocaleString('id-ID')}</strong></p>
+                        <span class="badge bg-primary footer">${item.kategori}</span>
+                    </div>
+                </div>
+            </div>
+        `;
+        favcardContainer.innerHTML += productCard;
+    });
+
+    // Attach favorite button handlers for removal
+    const favButtons = favcardContainer.querySelectorAll('.favorite-btn');
+    favButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const productId = btn.dataset.id;
+            const productIndex = product.findIndex(item => item.id === productId);
+            if (productIndex !== -1) {
+                product[productIndex].favorite = false;
+                saveProductsToLocalStorage();
+                renderFavoriteProducts();
+            }
+        });
+    });
+
+    if (favoriteProducts.length === 0) {
+        favcardContainer.innerHTML = '<h4 class="text-center">No favorite items found...</h4>';
+    }
+}
+
+// Call renderFavoriteProducts on fav.html
+if (window.location.pathname.endsWith('fav.html')) {
+    renderFavoriteProducts();
+}
 
     // Attach favorite button handlers (toggle class) after rendering
     const favButtons = productContainer.querySelectorAll('.favorite-btn');
@@ -278,52 +332,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
     
-const favcardContainer = document.querySelector('.column.container-fluid.mt-1');
-// Render favorite products on fav.html
-function renderFavoriteProducts() {
-    if (!favcardContainer) return;
-
-    const favoriteProducts = product.filter(item => item.favorite);
-
-    favcardContainer.innerHTML = '';
-    
-    favoriteProducts.forEach(item => {
-
-    const jobElement = document.createElement("div");
-    jobElement.className = "card mb-3 mx-auto rounded contact";
-    jobElement.style.width = "100%";
-        jobElement.innerHTML = `
-            <div class="col">
-                <div class="card h-100 mb-3">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="img/${item.gambar}" class="img-fluid rounded-start" alt="${item.nama}" style="height: 200px; object-fit: cover;">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                            <h5 class="card-title">${item.nama}</h5>
-                            <p class="card-text">${item.deskripsi}</p>
-                            <p class="card-text text-muted">Lokasi: ${item.lokasi || '—'}</p>
-                            <p class="card-text"><strong>Rp ${item.harga.toLocaleString('id-ID')}</strong></p>
-                            <span class="badge bg-primary footer">${item.kategori}</span>
-                    </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-        favcardContainer.appendChild(jobElement);
-    });
-
-    if (favoriteProducts.length === 0) {
-        favcardContainer.innerHTML = '<h4 class="text-center">No favorite items found...</h4>';
-    }
-}
-
-// Call renderFavoriteProducts on fav.html
-if (window.location.pathname.endsWith('fav.html')) {
-    renderFavoriteProducts();
-}
 
 // Initial save to localStorage
 saveProductsToLocalStorage();

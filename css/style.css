@@ -38,3 +38,6 @@ i{
 .clicked{
     background-image: url('../img/bxs-heart.svg');
 }
+.card{
+    max-width: 90%!important;
+}
