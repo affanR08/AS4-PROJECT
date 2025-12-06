@@ -21,7 +21,8 @@ const searchInput = document.getElementById('searchInput');
 const filterLocation = document.getElementById('filterLocation');
 const filterPrice = document.getElementById('filterPrice');
 const filterCategory = document.getElementById('filterCategory');
-const productContainer = document.querySelector('.row.row-cols-1.container.row-cols-md-3.g-4');
+const sortFilter = document.getElementById('sort-filter');
+const productContainer = document.getElementById('product-container');
 
 // Pagination state
 let currentPage = 1;
@@ -56,7 +57,7 @@ function renderProducts(productsToRender) {
         `;
         productContainer.innerHTML += productCard;
     });
-const favcardContainer = document.querySelector('.row.row-cols-1.container.row-cols-md-3.g-4.mt-1');
+const favcardContainer = document.querySelector('.fav');
 // Render favorite products on fav.html
 function renderFavoriteProducts() {
     if (!favcardContainer) return;
@@ -222,6 +223,7 @@ function filterProducts() {
     const selectedCategory = filterCategory?.value || '';
     const selectedLocation = filterLocation?.value || '';
     const salaryText = filterPrice?.value || '';
+    const sortBy = sortFilter?.value || '';
     const salaryFilter = filterPrice?.value || '';
 
     console.log(`Filtering by location: ${selectedLocation}`);
@@ -230,7 +232,9 @@ function filterProducts() {
         console.log(`Product location: ${item.lokasi}`);
         const matchesSearch = item.nama.toLowerCase().includes(searchTerm) || 
                               item.deskripsi.toLowerCase().includes(searchTerm) ||
-                              item.lokasi.toLowerCase().includes(searchTerm);
+                              item.lokasi.toLowerCase().includes(searchTerm) ||
+                              item.kategori.toLowerCase().includes(searchTerm)||
+                              item.harga.toString().toLowerCase().includes(searchTerm);
         const matchesCategory = !selectedCategory || item.kategori.toLowerCase().includes(selectedCategory.toLowerCase());
         const matchesLocation = !selectedLocation || item.lokasi.toLowerCase().includes(selectedLocation.toLowerCase());
 
@@ -246,6 +250,15 @@ function filterProducts() {
 
         return matchesSearch && matchesCategory && matchesLocation && salaryMatch;
     });
+
+    // Lakukan sorting setelah filtering
+    if (sortBy === 'price-asc') {
+        // Urutkan dari termurah ke termahal
+        filteredProducts.sort((a, b) => a.harga - b.harga);
+    } else if (sortBy === 'price-desc') {
+        // Urutkan dari termahal ke termurah
+        filteredProducts.sort((a, b) => b.harga - a.harga);
+    }
 
     lastFilteredProducts = filteredProducts;
     currentPage = 1;
@@ -312,6 +325,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (filterLocation) {
         filterLocation.addEventListener('change', filterProducts);
     }
+    if (sortFilter) {
+        sortFilter.addEventListener('change', filterProducts);
+    }
     // Update filter options to match product categories
     if (filterCategory) {
         filterCategory.innerHTML = `
@@ -330,6 +346,17 @@ document.addEventListener('DOMContentLoaded', function() {
             filterLocation.innerHTML += `<option value="${loc}">${loc}</option>`;
         });
     }
+
+    // Debugging: Log products loaded from localStorage
+    console.log('Loaded products:', product);
+
+    // Debugging: Log favorite products
+    function debugFavoriteProducts() {
+        const favoriteProducts = product.filter(item => item.favorite);
+        console.log('Favorite products:', favoriteProducts);
+    }
+
+    debugFavoriteProducts(); // Log favorite products on page load
 });
     
 

@@ -48,26 +48,26 @@
         <option value="kalimantan tengah">kalimantan tengah</option>
       </select>
     </div>
-    <div class="col-md-4 mb-3">
-      <select id="filterPrice" class="form-select">
-        <option value="">Price (none)</option>
-        <option value="<10000">Below Rp 10.000</option>
-        <option value="10000-50000">Rp 10.000 – Rp 50.000</option>
-        <option value=">50000">Above Rp 50.000</option>
-      </select>
-    </div>
-    <div class="col-md-4 mb-3">
+    
+    <div class="col-md-4">
       <select id="filterCategory" class="form-select">
         <option value="">Category (none)</option>
         <option value="cikarang">makanan</option>
         <option value="bekasi">minuman</option>
       </select>
     </div>
+    <div class="col-md-4 mb-3">
+      <select id="sort-filter" class="form-select">
+        <option value="">price (default)</option>
+        <option value="price-asc">Harga: Termurah ke Termahal</option>
+        <option value="price-desc">Harga: Termahal ke Termurah</option>
+      </select>
+    </div>
   </div>
 </div>
     </div>
     
-              <div class="row row-cols-1 container row-cols-md-3 g-4 mt-1">
+              <div id="product-container" class="row row-cols-1 container row-cols-md-3 g-4 mt-1">
   <div class="col">
     <div class="card h-100">
       <img src="..." class="card-img-top" alt="...">
