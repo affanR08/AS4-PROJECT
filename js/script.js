@@ -90,7 +90,7 @@ function renderProducts(productsToRender) {
 
 // Render favorite products on fav.html
 function renderFavoriteProducts() {
-  const favcardContainer = document.querySelector(".fav");
+  const favcardContainer = document.querySelector(".fav.row");
   if (!favcardContainer) return;
 
   const favoriteProducts = product.filter((item) => item.favorite);
@@ -99,8 +99,8 @@ function renderFavoriteProducts() {
 
   favoriteProducts.forEach((item, index) => {
     const productCard = `
-            <div class="col">
-                <div class="card h-100">
+            <div class="col-3 mb-3">
+                <div class="card w-100 h-100">
                     <img src="img/${item.gambar}" class="card-img-top" alt="${
       item.nama
     }" style="height: 200px; object-fit: cover;">
@@ -373,11 +373,11 @@ document.addEventListener("DOMContentLoaded", function () {
             <option value="lain-lain">Lain-lain</option>
         `;
   }
-
+  const uniqueLocationsa = uniqueLocations.sort();
   if (filterLocation) {
     // Populate location filter options
     filterLocation.innerHTML = `<option value="">Location (all)</option>`;
-    uniqueLocations.forEach((loc) => {
+    uniqueLocationsa.forEach((loc) => {
       filterLocation.innerHTML += `<option value="${loc}">${loc}</option>`;
     });
   }
