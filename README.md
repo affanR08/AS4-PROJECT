@@ -1,5 +1,10 @@
 # Newstep - Platform UMKM Lokal
 
+# Dokumentasi Proyek
+
+- [Panduan Pengembang](DEVELOPER_GUIDE.md)
+- [Panduan Pengguna](USER_GUIDE.md)
+
 Newstep adalah sebuah platform web modern yang didedikasikan untuk memberdayakan usaha mikro, kecil, dan menengah (UMKM) lokal. Website ini memudahkan pelanggan untuk menemukan dan menjelajahi produk-produk lokal berkualitas dengan antarmuka yang menarik dan responsif.
 
 ## 🚀 Fitur Utama
