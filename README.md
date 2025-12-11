@@ -46,10 +46,10 @@ Newstep adalah sebuah platform web modern yang didedikasikan untuk memberdayakan
 
 **Kelompok 4**
 
-- Affan Rabbani (Developer)
-- [Nama Anggota Lain]
-- [Nama Anggota Lain]
+- Affan Rabbani (Director, Developer)
+- Uwais Abdullah (Developer, Designer)
+- Muhammad Aidan Lutfan (Documenter)
 
 ---
 
-© 2025 Kelompok 4. All Rights Reserved.
+© 2025 Newstep Studio. All Rights Reserved.
