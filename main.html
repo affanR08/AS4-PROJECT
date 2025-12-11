@@ -11,28 +11,41 @@
 <body>
 <nav class="navbar navbar-expand-lg trans top-0 sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><img src="img/newstep.png" alt="" width="80"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="#">
+      <img src="img/newstep.png" alt="Logo" width="80">
+    </a>
+    <!-- Tombol toggler -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav fs-5">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="fav.html">favorite</a>
-        </li>
-        
-      </ul>
+
+    <!-- Offcanvas -->
+    <div class="offcanvas offcanvas-end offcanvas-lg" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav fs-5 nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="fav.html">Favorite</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
+
+<button id="filter-button" class="btn btn-primary filter-button">Filter</button>
 <div class="container-fluid d-flex flex-row column">
-    <div>
+    <button class="btn btn-primary acc"> </button>
+    <div class="filter">
         <div class="container mt-4 d-flex flex-row top-10">
   <div class="row g-3 d-flex flex-column">
     <div class="col-md-4 mb-3">
@@ -67,7 +80,7 @@
 </div>
     </div>
     
-              <div id="product-container" class="row row-cols-1 container row-cols-md-3 g-4 mt-1">
+              <div id="product-container" class="row row-cols-1 container row-cols-md-3 g-4 mt-1 start-50">
   <div class="col">
     <div class="card h-100">
       <img src="..." class="card-img-top" alt="...">

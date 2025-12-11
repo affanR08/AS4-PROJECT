@@ -1,5 +1,5 @@
 const product = [
-  { id: "p001", nama: "Nasi Goreng Spesial", harga: 25000, deskripsi: "Nasi goreng dengan telur, ayam, dan kerupuk.", kategori: "makanan", gambar: "placeholder.jpg",favorite:false ,lokasi: "Jakarta" },
+  { id: "p001", nama: "Nasi Goreng Spesial", harga: 25000, deskripsi: "Nasi goreng dengan telur, ayam, dan kerupuk.", kategori: "makanan", gambar: "nasi.png",favorite:false ,lokasi: "Jakarta" },
   { id: "p002", nama: "Es Teh Manis", harga: 5000, deskripsi: "Minuman segar teh manis dingin.", kategori: "minuman", gambar: "placeholder.jpg",favorite:false ,lokasi: "Bandung" },
   { id: "p003", nama: "Jasa Cuci Motor", harga: 15000, deskripsi: "Layanan pencucian motor cepat dan bersih.", kategori: "jasa", gambar: "placeholder.jpg",favorite:false ,lokasi: "Surabaya" },
   { id: "p004", nama: "Paket Internet 10GB", harga: 50000, deskripsi: "Kuota internet 10GB berlaku 30 hari.", kategori: "lain-lain", gambar: "placeholder.jpg",favorite:false ,lokasi: "Medan" },
@@ -16,6 +16,8 @@ const product = [
   {id: "p015", nama: "Jasa Desain Grafis", harga: 250000, deskripsi: "Layanan desain grafis untuk logo, poster, dan materi promosi.", kategori: "jasa", gambar: "placeholder.jpg",favorite:false ,lokasi: "Pekanbaru" },
   {id: "p016", nama: "Paket Data 5GB", harga: 30000, deskripsi: "Kuota internet 5GB berlaku 30 hari.", kategori: "lain-lain", gambar: "placeholder.jpg",favorite:false ,lokasi: "Balikpapan" }
 ];
+
+
 
 
 // daftar kota Indonesia untuk generate lokasi otomatis

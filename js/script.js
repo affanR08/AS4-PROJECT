@@ -23,7 +23,14 @@ const filterPrice = document.getElementById("filterPrice");
 const filterCategory = document.getElementById("filterCategory");
 const sortFilter = document.getElementById("sort-filter");
 const productContainer = document.getElementById("product-container");
+const filterButton = document.getElementById("filter-button");
 
+
+filterButton.addEventListener("click", () => {
+    const filterContainer = document.querySelector(".filter");
+    filterContainer.classList.toggle("open-filter");
+    document.body.classList.toggle("open-effect");
+});
 // Pagination state
 let currentPage = 1;
 const itemsPerPage = 15;
