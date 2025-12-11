@@ -7,30 +7,155 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-body-tertiary trans">
+<nav class="navbar navbar-expand-lg trans top-0 fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><img src="img/newstep.png" alt="" width="80"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="#">
+      <img src="img/newstep.png" alt="Logo" width="80">
+    </a>
+    <!-- Tombol toggler -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav fs-5">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="main.html">Products</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-        
-      </ul>
+
+    <!-- Offcanvas -->
+    <div class="offcanvas offcanvas-end offcanvas-lg" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav fs-5 nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="main.html">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="fav.html">Favorite</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
+
+<!-- Hero Section -->
+<section class="hero-section" style="background-image: url('img/burger-4829526_1280.jpg'); background-size: cover; background-position: center; min-height: 70vh; height: 100vh; display: flex; align-items: center; justify-content: flex-start; color: white; text-align: left; padding-left: 2%; padding-right: 2%;">
+  <div class="hero-content">
+    <h1 class="display-4 fw-bold" style="font-size: clamp(2rem, 8vw, 59px);">Produk Lokal </h1>
+    <h1 class="display-4 fw-bold" style="font-size: clamp(2rem, 8vw, 59px);">Terbaik Ada Di Sini</h1>
+    <p class="lead" style="font-weight: 400; font-size: clamp(1rem, 4vw, 30px);">Jelajahi Katalog Sekarang</p>
+    <a href="main.html"><button class="btn btn-primary" type="button">Cek Produk</button></a>
+  </div>
+</section>
+
+<!-- Separator -->
+<div class="separator" role="separator" aria-hidden="true"></div>
+
+<!-- Catalog Section -->
+
+<section class="catalog py-5">
+  <div class="container">
+    <h2 class="mb-4 text-center">Katalog Produk</h2>
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4" id="homei">
+      <!-- Products will be rendered here by JS -->
+    </div>
+  </div>
+</section>
+
 </body>
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="js/script.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+
+<!-- Testimonial Carousel -->
+<section class="testimonials py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Apa Kata Mereka</h2>
+    <p class="text-center text-muted mb-4">Pendapat asli pelanggan tentang produk dan layanan kami.</p>
+
+    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4500">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="d-flex justify-content-center">
+            <div class="testimonial-card p-4" style="max-width:700px;">
+              <div class="d-flex align-items-center mb-3">
+                <img src="img/7c2c7698963853f45dfd3684f7c85661.jpg" class="rounded-circle me-3 avatar" alt="Siti Rahma">
+                <div>
+                  <h5 class="mb-0">Siti Rahma</h5>
+                  <small class="text-muted">Pembeli</small>
+                </div>
+              </div>
+              <p class="mb-0">“Produk lokalnya benar-benar berkualitas — rasanya enak dan kemasannya rapi. Pengiriman cepat sekali!”</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="d-flex justify-content-center">
+            <div class="testimonial-card p-4" style="max-width:700px;">
+              <div class="d-flex align-items-center mb-3">
+                <img src="img/7c2c7698963853f45dfd3684f7c85661.jpg" class="rounded-circle me-3 avatar" alt="Andi Wijaya">
+                <div>
+                  <h5 class="mb-0">Andi Wijaya</h5>
+                  <small class="text-muted">Penjual</small>
+                </div>
+              </div>
+              <p class="mb-0">“Platformnya membantu saya menjangkau pelanggan lokal—support cepat dan tampilan katalognya bersih.”</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="d-flex justify-content-center">
+            <div class="testimonial-card p-4" style="max-width:700px;">
+              <div class="d-flex align-items-center mb-3">
+                <img src="img/7c2c7698963853f45dfd3684f7c85661.jpg" class="rounded-circle me-3 avatar" alt="Rina Putri">
+                <div>
+                  <h5 class="mb-0">Rina Putri</h5>
+                  <small class="text-muted">Konsumen</small>
+                </div>
+              </div>
+              <p class="mb-0">“Harga bersaing, kualitas memuaskan. Saya sudah rekomendasikan ke teman-teman!”</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<footer class="mt-5">
+    <div class="container">
+        <p class="mb-0">&copy; 2024 Newstep. All rights reserved. | <a href="https://policies.google.com/privacy?hl=en-US">Privacy Policy</a></p>
+    </div>
+</footer>
+
+<script>
+  (function(){
+    var el = document.getElementById('testimonialCarousel');
+    if (el && window.bootstrap && bootstrap.Carousel) {
+      new bootstrap.Carousel(el, { interval: 4000, ride: 'carousel', pause: false, wrap: true });
+    }
+  })();
+</script>
+
 </html>

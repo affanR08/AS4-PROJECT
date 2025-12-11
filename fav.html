@@ -7,76 +7,76 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg trans top-0 sticky-top">
+<nav class="navbar navbar-expand-lg trans top-0 fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><img src="img/newstep.png" alt="" width="80"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="#">
+      <img src="img/newstep.png" alt="Logo" width="80">
+    </a>
+    <!-- Tombol toggler -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav fs-5">
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="main.html">Products</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-        
-      </ul>
+
+    <!-- Offcanvas -->
+    <div class="offcanvas offcanvas-end offcanvas-lg" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav fs-5 nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="main.html">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="fav.html">Favorite</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a> 
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
-<div class="container-fluid d-flex flex-row column">
+<div class="container main-wrapper mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold"><i class='bx bxs-heart text-danger'></i> Favorite Products</h2>
+        <a href="main.html" class="btn btn-outline-primary rounded-pill">Back to Products</a>
+    </div>
+    
+    <div class="fav-container row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+        <!-- Rendered by JS -->
+    </div>
+</div>
+<div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3">
+  <div id="liveToast" class="toast text-bg-dark" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="2000">
+    <div class="toast-header text-bg-dark">
+      <img src="img/newstep.png" class="rounded me-2" alt="..." width="20">
+      <strong class="me-auto">Newstep</strong>
+      <small>Just now</small>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Produk Telah Masuk Favorite
+    </div>
+  </div>
+</div>
 
-<button id="filter-button" class="btn btn-primary dis"></button>
-    <button class="btn btn-primary"> </button>
-              <div class="container">
-                <div class="fav row">
-  <div class="col">
-    <div class="card h-100">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
+<footer class="mt-5">
+    <div class="container">
+        <p class="mb-0">&copy; 2024 Newstep. All rights reserved. | <a href="https://policies.google.com/privacy?hl=en-US">Privacy Policy</a></p>
     </div>
-  </div>
-  <div class="col">
-    <div class="card h-100">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-</div>
-<div id="paginationControls"></div>
+</footer>
+
 </body>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script type="module" src="js/script.js"></script>

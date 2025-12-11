@@ -25,12 +25,15 @@ const sortFilter = document.getElementById("sort-filter");
 const productContainer = document.getElementById("product-container");
 const filterButton = document.getElementById("filter-button");
 
-
-filterButton.addEventListener("click", () => {
-    const filterContainer = document.querySelector(".filter");
-    filterContainer.classList.toggle("open-filter");
-    document.body.classList.toggle("open-effect");
-});
+if (filterButton) {
+  filterButton.addEventListener("click", () => {
+    // New logic for mobile filter toggle
+    const mobileWrapper = document.getElementById("mobileFilter");
+    if (mobileWrapper) {
+      mobileWrapper.classList.toggle("show");
+    }
+  });
+}
 // Pagination state
 let currentPage = 1;
 const itemsPerPage = 15;
@@ -43,7 +46,7 @@ function renderProducts(productsToRender) {
 
   productContainer.innerHTML = "";
 
-  productsToRender.forEach((item, index) => {
+  productsToRender.forEach((item) => {
     const productCard = `
             <div class="col">
                 <div class="card h-100">
@@ -55,7 +58,9 @@ function renderProducts(productsToRender) {
                         <h5 class="card-title">${item.nama}</h5>
                         <button class="btn btn-light btn-sm favorite-btn ${
                           item.favorite ? "clicked" : ""
-                        }" data-id="${item.id}" title="Add to Favorites">
+                        }" data-id="${
+      item.id
+    }" title="Add to Favorites" type="button">
                         </button>
                         </div>
                         <p class="card-text">${item.deskripsi}</p>
@@ -90,14 +95,57 @@ function renderProducts(productsToRender) {
 
         // Save updated products to local storage
         saveProductsToLocalStorage();
+
+        // Show toast with dynamic message
+        const toastLiveExample = document.getElementById("liveToast");
+        const toastBody = toastLiveExample.querySelector(".toast-body");
+        if (productToUpdate.favorite) {
+          toastBody.textContent = "Produk Telah Masuk Favorite";
+        } else {
+          toastBody.textContent = "Produk Telah Dihapus dari Favorite";
+        }
+        const toast = new bootstrap.Toast(toastLiveExample);
+        toast.show();
       }
     });
   });
 }
 
+// Render products for Home Page (index.html)
+function renderHomeProducts() {
+  const homeContainer = document.getElementById("homei");
+  if (!homeContainer) return;
+
+  // Display only first 8 products
+  const homeProducts = product.slice(0, 8);
+
+  homeContainer.innerHTML = "";
+
+  homeProducts.forEach((item) => {
+    const productCard = `
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img/${item.gambar}" class="card-img-top" alt="${
+      item.nama
+    }" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">${item.nama}</h5>
+                        <p class="card-text text-truncate">${item.deskripsi}</p>
+                        <p class="card-text"><strong>Rp ${item.harga.toLocaleString(
+                          "id-ID"
+                        )}</strong></p>
+                        <a href="main.html" class="btn btn-primary w-100">Lihat Detail</a>
+                    </div>
+                </div>
+            </div>
+        `;
+    homeContainer.innerHTML += productCard;
+  });
+}
+
 // Render favorite products on fav.html
 function renderFavoriteProducts() {
-  const favcardContainer = document.querySelector(".fav.row");
+  const favcardContainer = document.querySelector(".fav-container");
   if (!favcardContainer) return;
 
   const favoriteProducts = product.filter((item) => item.favorite);
@@ -106,8 +154,8 @@ function renderFavoriteProducts() {
 
   favoriteProducts.forEach((item, index) => {
     const productCard = `
-            <div class="col-3 mb-3">
-                <div class="card w-100 h-100">
+            <div class="col mb-3">
+                <div class="card h-100">
                     <img src="img/${item.gambar}" class="card-img-top" alt="${
       item.nama
     }" style="height: 200px; object-fit: cover;">
@@ -146,6 +194,15 @@ function renderFavoriteProducts() {
         product[productIndex].favorite = false;
         saveProductsToLocalStorage();
         renderFavoriteProducts();
+
+        // Show toast for removal
+        const toastLiveExample = document.getElementById("liveToast");
+        if (toastLiveExample) {
+          const toastBody = toastLiveExample.querySelector(".toast-body");
+          toastBody.textContent = "Produk Telah Dihapus dari Favorite";
+          const toast = new bootstrap.Toast(toastLiveExample);
+          toast.show();
+        }
       }
     });
   });
@@ -343,13 +400,21 @@ document.addEventListener("DOMContentLoaded", function () {
   // Initial render
 
   // Check if we are on the favorites page
-  if (document.querySelector(".fav")) {
+  if (document.querySelector(".fav-container")) {
     renderFavoriteProducts();
   }
 
+  // Check if we are on the home page
+  if (document.getElementById("homei")) {
+    renderHomeProducts();
+  }
+
   // set lastFilteredProducts and render first page
-  lastFilteredProducts = product.slice();
-  renderPage(product);
+  // set lastFilteredProducts and render first page
+  if (productContainer) {
+    lastFilteredProducts = product.slice();
+    renderPage(product);
+  }
 
   // Search functionality
   if (searchInput) {
