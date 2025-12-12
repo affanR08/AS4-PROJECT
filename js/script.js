@@ -2,14 +2,28 @@ import { product } from "./product.js";
 
 // Check if products are already in localStorage
 const storedProducts = localStorage.getItem("products");
+let storedData = [];
+
 if (storedProducts) {
-  // Parse and use stored products
-  product.length = 0; // Clear the current product array
-  product.push(...JSON.parse(storedProducts));
-} else {
-  // Save the initial product data to localStorage
-  localStorage.setItem("products", JSON.stringify(product));
+  try {
+    storedData = JSON.parse(storedProducts);
+  } catch (e) {
+    console.error("Error parsing stored products", e);
+  }
 }
+
+// Sync imported product data with stored favorites
+// We use the imported 'product' as the source of truth for details (image, price, etc)
+// and only restore the 'favorite' status from localStorage.
+product.forEach((p) => {
+  const storedItem = storedData.find((s) => s.id === p.id);
+  if (storedItem) {
+    p.favorite = storedItem.favorite;
+  }
+});
+
+// Immediately save the synced data back to localStorage so it's fresh
+saveProductsToLocalStorage();
 
 // Ensure products are saved to localStorage after any modifications
 function saveProductsToLocalStorage() {
@@ -383,17 +397,9 @@ const productProxy = new Proxy(product, productHandler);
 // Example: Use productProxy.push() instead of product.push()
 // Ensure all operations on the product array go through the proxy
 
-// Function to load products from local storage
-function loadProductsFromLocalStorage() {
-  const storedProducts = localStorage.getItem("products");
-  if (storedProducts) {
-    const parsedProducts = JSON.parse(storedProducts);
-    product.splice(0, product.length, ...parsedProducts); // Update array content without reassigning
-  }
-}
-
-// Call this function at the beginning to load products
-loadProductsFromLocalStorage();
+// Function to load products from local storage - DEPRECATED/REMOVED
+// logic handled at init
+// function loadProductsFromLocalStorage() { ... }
 
 // Event listeners
 document.addEventListener("DOMContentLoaded", function () {
