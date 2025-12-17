@@ -41,23 +41,30 @@ Simpan produk yang Anda sukai untuk dilihat nanti!
 3.  **Menghapus dari Favorit:**
     - Klik kembali tombol hati merah pada produk di halaman mana saja, atau langsung di halaman Favorit.
 
-## 4. Menghubungi Penjual / Admin
+## 4. Cara Memesan (Inquiry)
 
-Jika Anda memiliki pertanyaan atau ingin bekerja sama:
+Kami menggunakan sistem pemesanan langsung via formulir:
 
-1.  Buka halaman **"About"** (`about.html`).
-2.  Gulir ke bagian bawah ke formulir **"Hubungi Kami"**.
-3.  Isi **Nama**, **Email**, **Subjek**, dan **Pesan**.
-4.  Klik **"Kirim Pesan"**.
-5.  Tunggu notifikasi sukses yang muncul di layar.
+1.  **Pilih Produk:** Klik tombol **"Pesan Sekarang"** pada produk yang diinginkan.
+    - Dari halaman Home, Anda akan diarahkan ke halaman utama dan modal akan terbuka otomatis.
+    - Dari halaman lain, modal akan langsung terbuka.
+2.  **Isi Formulir:**
+    - Nama produk akan terisi otomatis.
+    - Lengkapi **Nama**, **Kontak (Email/WA)**, dan **Alamat**.
+3.  **Kirim:** Klik tombol kirim. Pesanan akan masuk ke email admin kami dan Anda akan melihat notifikasi sukses.
 
-## 5. Pertanyaan Umum (FAQ)
+## 5. Fitur Tambahan
+
+- **Badge Favorit:** Ikon hati di menu atas menampilkan angka jumlah produk yang telah Anda simpan.
+- **Tombol Pintas (Floating Button):** Di pojok kanan bawah layar terdapat tombol bulat (ikon 'i') yang selalu mengikuti Anda. Klik untuk akses cepat ke info kontak dan halaman About.
+
+## 6. Pertanyaan Umum (FAQ)
 
 **Q: Apakah saya perlu mendaftar akun?**
 A: Tidak, Anda bisa menjelajahi dan menyimpan favorit tanpa perlu mendaftar saat ini.
 
 **Q: Bagaimana cara pembayarannya?**
-A: Saat ini website berupa katalog. Untuk pembelian, silakan hubungi kontak yang tertera di halaman About.
+A: Setelah Anda mengirim formulir "Pesan Sekarang", tim kami akan menghubungi Anda melalui kontak yang Anda berikan untuk detail pembayaran dan pengiriman.
 
 ---
 

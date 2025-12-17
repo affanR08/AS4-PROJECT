@@ -13,12 +13,16 @@ Newstep adalah sebuah platform web modern yang didedikasikan untuk memberdayakan
 - **Katalog Produk Dinamis:**
   - Halaman Beranda (`index.html`) menampilkan produk unggulan secara otomatis.
   - Halaman Produk (`main.html`) dengan fitur pencarian dan filter kategori yang responsif.
-- **Sistem Favorit:** Pengguna dapat menyimpan produk ke dalam daftar favorit (`fav.html`) yang tersimpan di browser (Local Storage).
+- **Sistem Pemesanan (Inquiry):** Tombol "Pesan Sekarang" membuka modal formulir pemesanan otomatis untuk setiap produk.
+- **Sistem Favorit & Badge:**
+  - Simpan produk ke favorit dengan tombol hati.
+  - Badge notifikasi real-time di navbar menampilkan jumlah item favorit.
 - **Halaman Tentang Kami & Kontak:**
   - Informasi visi dan misi organisasi.
+  - Tombol melayang (Floating Button) untuk akses cepat ke halaman About.
   - Formulir kontak fungsional yang terintegrasi dengan layanan pengiriman email (FormSubmit).
   - Notifikasi Toast saat pesan berhasil terkirim.
-- **Responsif Penuh:** Tampilan yang optimal di berbagai perangkat (Desktop, Tablet, dan Mobile) dengan menu _Offcanvas_ untuk navigasi mobile.
+- **Responsif Penuh:** Navbar satu baris yang optimal di mobile, serta layout grid yang fleksibel.
 
 ## 🛠️ Teknologi yang Digunakan
 

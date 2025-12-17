@@ -67,7 +67,7 @@ function renderProducts(productsToRender) {
                     <img src="img/${item.gambar}" class="card-img-top" alt="${
       item.nama
     }" style="height: 200px; object-fit: cover;">
-                    <div class="card-body">
+                    <div class="card-body d-flex flex-column">
                     <div class="d-flex justify-content-between mb-2">
                         <h5 class="card-title">${item.nama}</h5>
                         <button class="btn btn-light btn-sm favorite-btn ${
@@ -81,12 +81,17 @@ function renderProducts(productsToRender) {
                         <p class="card-text text-muted">Lokasi: ${
                           item.lokasi || "—"
                         }</p>
-                        <p class="card-text"><strong>Rp ${item.harga.toLocaleString(
-                          "id-ID"
-                        )}</strong></p>
-                        <span class="badge bg-primary footer">${
-                          item.kategori
-                        }</span>
+                        <div class="mt-auto">
+                            <p class="card-text"><strong>Rp ${item.harga.toLocaleString(
+                              "id-ID"
+                            )}</strong></p>
+                            <span class="badge bg-primary footer mb-3">${
+                              item.kategori
+                            }</span>
+                            <button class="btn btn-primary w-100 mb-2" onclick="window.openInquiryModal('${
+                              item.id
+                            }')">Pesan Sekarang</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -109,6 +114,7 @@ function renderProducts(productsToRender) {
 
         // Save updated products to local storage
         saveProductsToLocalStorage();
+        updateFavoriteBadge(); // Update badge on change
 
         // Show toast with dynamic message
         const toastLiveExample = document.getElementById("liveToast");
@@ -142,13 +148,22 @@ function renderHomeProducts() {
                     <img src="img/${item.gambar}" class="card-img-top" alt="${
       item.nama
     }" style="height: 200px; object-fit: cover;">
-                    <div class="card-body">
+                    <div class="card-body d-flex flex-column">
                         <h5 class="card-title">${item.nama}</h5>
                         <p class="card-text text-truncate">${item.deskripsi}</p>
-                        <p class="card-text"><strong>Rp ${item.harga.toLocaleString(
-                          "id-ID"
-                        )}</strong></p>
-                        <a href="main.html" class="btn btn-primary w-100">Lihat Detail</a>
+                        <div class="mt-auto">
+                            <p class="card-text"><strong>Rp ${item.harga.toLocaleString(
+                              "id-ID"
+                            )}</strong></p>
+                            <div class="mb-2">
+                                <span class="badge bg-primary footer">${
+                                  item.kategori
+                                }</span>
+                            </div>
+                            <button class="btn btn-primary w-100 mb-2" onclick="window.openInquiryModal('${
+                              item.id
+                            }')">Pesan Sekarang</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -173,7 +188,7 @@ function renderFavoriteProducts() {
                     <img src="img/${item.gambar}" class="card-img-top" alt="${
       item.nama
     }" style="height: 200px; object-fit: cover;">
-                    <div class="card-body">
+                    <div class="card-body d-flex flex-column">
                     <div class="d-flex justify-content-between mb-2">
                         <h5 class="card-title">${item.nama}</h5>
                         <button class="btn btn-light btn-sm favorite-btn clicked" data-id="${
@@ -185,12 +200,19 @@ function renderFavoriteProducts() {
                         <p class="card-text text-muted">Lokasi: ${
                           item.lokasi || "—"
                         }</p>
-                        <p class="card-text"><strong>Rp ${item.harga.toLocaleString(
-                          "id-ID"
-                        )}</strong></p>
-                        <span class="badge bg-primary footer">${
-                          item.kategori
-                        }</span>
+                        <div class="mt-auto">
+                            <p class="card-text"><strong>Rp ${item.harga.toLocaleString(
+                              "id-ID"
+                            )}</strong></p>
+                            <div class="mb-2">
+                                <span class="badge bg-primary footer">${
+                                  item.kategori
+                                }</span>
+                            </div>
+                             <button class="btn btn-primary w-100" onclick="window.location.href='main.html?open_inquiry=${
+                               item.id
+                             }'">Pesan Sekarang</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -470,7 +492,102 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   debugFavoriteProducts(); // Log favorite products on page load
+
+  // Check for auto-open inquiry modal from URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const openInquiryId = urlParams.get("open_inquiry");
+  if (openInquiryId) {
+    // Small delay to ensure modal logic is ready
+    setTimeout(() => {
+      if (typeof window.openInquiryModal === "function") {
+        window.openInquiryModal(openInquiryId);
+        // Clean URL
+        const newUrl =
+          window.location.protocol +
+          "//" +
+          window.location.host +
+          window.location.pathname;
+        window.history.replaceState({ path: newUrl }, "", newUrl);
+      }
+    }, 500);
+  }
+
+  // Setup Inquiry Form
+  const inquiryForm = document.getElementById("inquiryForm");
+  if (inquiryForm) {
+    inquiryForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const btn = inquiryForm.querySelector('button[type="submit"]');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = "Mengirim...";
+      btn.disabled = true;
+
+      const formData = new FormData(inquiryForm);
+      // NOTE: Replace with your actual email endpoint, or use formsubmit's ajax
+      fetch("https://formsubmit.co/ajax/affanrabbani19@gmail.com", {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // Close modal
+          const modalEl = document.getElementById("inquiryModal");
+          const modal = bootstrap.Modal.getInstance(modalEl);
+          modal.hide();
+
+          // Reset form
+          inquiryForm.reset();
+
+          // Show Toast
+          const toastEl = document.getElementById("statusToast");
+          if (toastEl) {
+            const toast = new bootstrap.Toast(toastEl);
+            toast.show();
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          alert("Terjadi kesalahan saat mengirim pesanan. Silakan coba lagi.");
+        })
+        .finally(() => {
+          btn.innerHTML = originalText;
+          btn.disabled = false;
+        });
+    });
+  }
 });
+
+// Window function to open modal
+window.openInquiryModal = function (productId) {
+  const p = product.find((item) => item.id === productId);
+  if (!p) return;
+
+  const imgEl = document.getElementById("modalProductImage");
+  const nameEl = document.getElementById("modalProductNameDisplay");
+  const priceEl = document.getElementById("modalProductPriceDisplay");
+  const inputEl = document.getElementById("inputProduct");
+
+  if (imgEl) imgEl.src = `img/${p.gambar}`;
+  if (nameEl) nameEl.textContent = p.nama;
+  if (priceEl) priceEl.textContent = `Rp ${p.harga.toLocaleString("id-ID")}`;
+  if (inputEl) inputEl.value = p.nama;
+
+  const modalEl = document.getElementById("inquiryModal");
+  if (modalEl) {
+    const modal = new bootstrap.Modal(modalEl);
+    modal.show();
+  }
+};
+
+// Function to update favorite badge count
+function updateFavoriteBadge() {
+  const badge = document.getElementById("fav-badge");
+  if (badge) {
+    const count = product.filter((p) => p.favorite).length;
+    badge.textContent = count;
+  }
+}
 
 // Initial save to localStorage
 saveProductsToLocalStorage();
+updateFavoriteBadge();

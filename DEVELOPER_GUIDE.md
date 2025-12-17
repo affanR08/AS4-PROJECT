@@ -63,11 +63,14 @@ Website menggunakan desain **Glassmorphism**.
 
 Script utama menangani interaktivitas.
 
-- `renderPage(data)`: Merender kartu produk ke dalam container grid.
+- `renderPage(data)`: Merender kartu produk dengan tombol aksi yang responsif.
 - `filterProduct()`: Logika pencarian dan filter kategori.
-- `renderHomeProducts()`: Khusus `index.html`, merender 8 produk pertama.
-- `toggleFavorite(id)`: Menambah/menghapus produk dari localStorage.
-- **Event Listeners:** Menangani klik tombol filter, search input, dan tombol favorit.
+- `renderHomeProducts()`: Merender produk di Home dengan redirect logic ke `main.html?open_inquiry=ID`.
+- `updateFavoriteBadge()`: Menghitung dan menampilkan jumlah favorit di navbar secara real-time.
+- `openInquiryModal(id)`: Membuka modal pemesanan dan mengisi data produk secara otomatis.
+- **Proxy Pattern:** Menggunakan `Proxy` pada array `product` untuk otomatis menyimpan ke localStorage setiap kali ada perubahan data.
+- **Auto-Open Logic:** Pada `DOMContentLoaded`, script mengecek URL parameter `open_inquiry` untuk membuka modal secara otomatis (cross-page interaction).
+- **Event Listeners:** Menangani filter, search, submit form modal, dan inisialisasi toast.
 
 ## 5. Deployment
 
