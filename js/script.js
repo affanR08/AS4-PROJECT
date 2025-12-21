@@ -524,7 +524,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const formData = new FormData(inquiryForm);
       // NOTE: Replace with your actual email endpoint, or use formsubmit's ajax
-      fetch("https://formsubmit.co/ajax/affanrabbani19@gmail.com", {
+      fetch("https://formsubmit.co/ajax/471a8be2a19c741293a87753e748ba68", {
         method: "POST",
         body: formData,
       })
